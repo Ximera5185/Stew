@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Stew
 {
     internal class Database
     {
-        List<Stew> _stews = new List<Stew>();
+        private List<Stew> _stews = new List<Stew>();
 
-        public Database() 
+        public Database()
         {
             AddStaws();
         }
 
-        private void AddStaws() 
+        public void ShowExpiredStews(int currentDate)
         {
-            _stews.Add(new Stew("Тушонка Ангарскя",1989,10));
+            var exspiredListStews = _stews.Where(stew => stew.YearOfProduction + stew.ShelfLife < currentDate);
+
+            foreach (Stew stew in exspiredListStews)
+            {
+                Console.WriteLine($"{stew.Name} Дата производства - {stew.YearOfProduction} Срок годности - {stew.ShelfLife}");
+            }
+        }
+
+        private void AddStaws()
+        {
+            _stews.Add(new Stew("Тушонка Ангарскя", 1989, 10));
             _stews.Add(new Stew("Тушонка Ангарскя", 1990, 11));
             _stews.Add(new Stew("Тушонка Ангарскя", 1995, 12));
             _stews.Add(new Stew("Тушонка Русская", 2000, 10));

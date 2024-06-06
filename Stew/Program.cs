@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Stew
 {
@@ -10,6 +6,13 @@ namespace Stew
     {
         static void Main(string [] args)
         {
+            Database database = new Database();
+
+            int currentDate = 2004;
+
+            database.ShowExpiredStews(currentDate);
+
+            Console.ReadKey();
         }
     }
 }
